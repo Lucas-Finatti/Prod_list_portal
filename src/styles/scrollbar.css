@@ -1,0 +1,26 @@
+/* Define a cor da barra de rolagem e do controle de rolagem */
+::-webkit-scrollbar {
+    background-color: #f5f5f5;
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 10px;
+  }
+  
+  /* Define a largura da barra de rolagem */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Define a cor da barra de rolagem e do controle de rolagem para navegadores que não suportam a propriedade scrollbar-color */
+  html {
+    scrollbar-color: #ccc #f5f5f5;
+    scrollbar-width: thin;
+  }
+  
+  body {
+    height: 2000px; /* Para gerar uma barra de rolagem */
+  }
+  

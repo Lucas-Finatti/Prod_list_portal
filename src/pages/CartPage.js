@@ -1,17 +1,15 @@
 import React from "react";
 import Navigation from '../navigation/navigation'
-import axios from "axios";
-import { Col, Row } from "react-bootstrap";
+import ShoppingCart from "../components/cart_component";
 
-const Product = () => {
-
+const Cart = () => {
     return (
         <>
             <Navigation></Navigation>
-            <h1>Product</h1>
-            
+            <h1>Cart</h1>
+            <ShoppingCart/>
         </>
     )
 }
 
-export default Product
+export default Cart
