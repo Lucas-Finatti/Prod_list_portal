@@ -1,16 +1,22 @@
+// Importação dos estilos e do componente SearchBar
 import '../styles/product_component.css'
 import '../styles/scrollbar.css'
 import SearchBar from './SearchBar'
+// Importação dos hooks useState e useEffect
 import { useState, useEffect } from 'react';
 
 function ProductList({products}) {
+  // State para armazenar os produtos filtrados
   const [filteredProducts, setFilteredProducts] = useState([]);
+  // State para armazenar a ordem de classificação
   const [sortOrder, setSortOrder] = useState('asc');
 
+  // Efeito para atualizar os produtos filtrados sempre que a lista de produtos muda
   useEffect(() => {
     setFilteredProducts(products);
   }, [products]);
 
+  // Função para adicionar um produto ao carrinho
   const addToCart = (product) => {
       const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
       const existingItemIndex = cartItems.findIndex(item => (
@@ -30,16 +36,20 @@ function ProductList({products}) {
       console.log(localStorage);
   };
 
+  // Função para lidar com a pesquisa
   const handleSearch = (searchTerm) => {
       const searchRegex = new RegExp(searchTerm, 'i');
+      // Filtra os produtos pelo nome ou categoria correspondentes ao termo de pesquisa
       setFilteredProducts(products.filter((product) => (
         searchRegex.test(product.name) ||
         searchRegex.test(product.category)
       )));
   };
 
+  // Função para lidar com a ordem de classificação
   const handleSortOrder = (order) => {
     setSortOrder(order);
+    // Ordena os produtos com base na ordem selecionada
     const sortedProducts = [...filteredProducts].sort((a, b) => {
       if (order === 'asc') {
         return a.value - b.value;
@@ -47,19 +57,21 @@ function ProductList({products}) {
         return b.value - a.value;
       }
     });
+    // Atualiza os produtos filtrados com a lista ordenada
     setFilteredProducts(sortedProducts);
   };
 
   return (
     <div>
       <div class='SearchBar-container'>
+        {/* Componente SearchBar para lidar com a pesquisa */}
         <SearchBar class='SearchBar' onSearch={handleSearch} />
       </div>
-        <button onClick={() => handleSortOrder('asc')}>less</button>
-        <button onClick={() => handleSortOrder('desc')}>more</button>
+        {/* Botões para selecionar a ordem de classificação */}
+        <button onClick={() => handleSortOrder('asc')}>Menor preço</button>
+        <button onClick={() => handleSortOrder('desc')}>Maior preço</button>
       <div className="product_list">
-
-
+        {/* Renderiza a lista de produtos filtrados */}
         {Array.isArray(filteredProducts) && filteredProducts.length > 0 ? (
         filteredProducts.map((product, index) => (
             <p key={index}>
@@ -72,6 +84,7 @@ function ProductList({products}) {
             </p>
         ))
         ) : (
+        // Renderiza uma mensagem caso não haja produtos filtrados
         <p>Nenhum produto encontrado.</p>
         )}
       </div>
