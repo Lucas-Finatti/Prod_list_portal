@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import '../styles/ProductPage.css'
 
 // define a baseURL para as requisições feitas usando o axios
-axios.defaults.baseURL = '127.0.0.1:5000/product/'
+axios.defaults.baseURL = 'https://prodlist.onrender.com/'
 
 const Product = () => {
     // define um estado para armazenar a lista de produtos
@@ -19,7 +19,7 @@ const Product = () => {
             setProducts(response.data);
         }
 
-        getData('http://127.0.0.1:5000/product/');
+        getData('https://prodlist.onrender.com/product/');
     }, []);
 
     // renderiza o componente Navigation, um título e o componente ProductList,
