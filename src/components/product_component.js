@@ -68,8 +68,8 @@ function ProductList({products}) {
         <SearchBar class='SearchBar' onSearch={handleSearch} />
       </div>
         {/* Botões para selecionar a ordem de classificação */}
-        <button onClick={() => handleSortOrder('asc')}>Menor preço</button>
-        <button onClick={() => handleSortOrder('desc')}>Maior preço</button>
+        <button onClick={() => handleSortOrder('asc')}>Menor</button>
+        <button onClick={() => handleSortOrder('desc')}>Maior</button>
       <div className="product_list">
         {/* Renderiza a lista de produtos filtrados */}
         {Array.isArray(filteredProducts) && filteredProducts.length > 0 ? (
