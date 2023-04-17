@@ -85,7 +85,7 @@ function ProductList({products}) {
         ))
         ) : (
         // Renderiza uma mensagem caso não haja produtos filtrados
-        <p>Nenhum produto encontrado.</p>
+        <p>Espere os produtos carregarem.</p>
         )}
       </div>
     </div>
